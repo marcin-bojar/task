@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cart</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+    <body>
+        <div class="shopping-cart">
+
+            <header class="shopping-cart__header">
+                <h1 class="shopping-cart__title">Shopping Cart</h1>
+                <button class="btn">Proceed to checkout</button>
+            </header>
+
+            <section class="shopping-cart__content">
+
+                <div class="shopping-cart__items-list">
+                    <div class="shopping-cart__description">
+                        <h4 class="shopping-cart__category
+                            shopping-cart__category--name">Product Name</h4>
+
+                        <h4 class="shopping-cart__category
+                            shopping-cart__category--price">Unit Price</h4>
+
+                        <h4 class="shopping-cart__category
+                            shopping-cart__category--qty">Qty</h4>
+                    </div>
+
+                    <div class="cart-item">
+                        <div class="cart-item__remove-container">
+                            <button class="cart-item__btn
+                                cart-item__btn--remove"></button>
+                        </div>
+                        <div class="cart-item__img-container">
+                            <img src="./images/headphones.png" alt="Product"
+                                class="cart-item__img">
+                        </div>
+                        <div class="cart-item__name">Headphones</div>
+                        <div class="cart-item__price">$11.90</div>
+                        <div class="quantity-editor">
+                            <button class="quantity-editor__btn">-</button>
+                            <div class="quantity-editor__qty">2</div>
+                            <button class="quantity-editor__btn">+</button>
+                            <button class="cart-item__btn cart-item__btn--edit"></button>
+                        </div>
+                    </div>
+                    <div class="shopping-cart__footer">
+                        <button class="btn btn--bold-text btn--footer">Update
+                            Shopping Cart</button>
+                    </div>
+                </div>
+
+                <div class="shopping-cart__totals">
+                    <div class="shopping-cart__table-header">
+                        Shipping <span class="shopping-cart__table-span">$23.80</span>
+                    </div>
+                    <div class="shopping-cart__table-header">Cart Totals</div>
+                    <div class="shopping-cart__table">
+                        <div class="shopping-cart__table-item">
+                            Subtotal <span class="shopping-cart__table-span">$23.80</span>
+                        </div>
+                        <div class="shopping-cart__table-item">
+                            Grand Total <span class="shopping-cart__table-span
+                                shopping-cart__table-span--big">$23.80</span>
+                        </div>
+                        <button class="btn btn--bold-text">Proceed to checkout</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </body>
+</html>
