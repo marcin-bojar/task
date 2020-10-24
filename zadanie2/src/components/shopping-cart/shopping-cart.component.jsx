@@ -1,105 +1,35 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import CartItem from '../cart-item/cart-item.component';
+
+import { updateCart, goToCheckout } from '../../redux/cart/cart.actions';
 
 import './shopping-cart.styles.css';
 
 class ShoppingCart extends React.Component {
-  constructor() {
-    super();
-
-    this.state = {
-      cartItems: [
-        {
-          id: 1,
-          name: 'Headphones',
-          price: 11.9,
-          quantity: 2,
-          imageUrl: './images/headphones.png',
-        },
-      ],
-      subtotal: 0,
-      grandTotal: 0,
-      shipping: '23.80',
-      hidden: false,
-    };
-  }
-
   componentDidMount() {
-    this.updateCart();
+    const { updateCart } = this.props;
+    updateCart();
   }
-
-  addItem = itemToAdd => {
-    this.setState(state => {
-      return {
-        cartItems: state.cartItems.map(item =>
-          item.id === itemToAdd.id
-            ? { ...item, quantity: item.quantity + 1 }
-            : item
-        ),
-      };
-    });
-  };
-
-  removeItem = itemToRemove => {
-    const { quantity } = itemToRemove;
-    if (quantity === 1) return;
-
-    this.setState(state => {
-      return {
-        cartItems: state.cartItems.map(item =>
-          item.id === itemToRemove.id
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
-        ),
-      };
-    });
-  };
-
-  clearItemFromCart = itemToRemove => {
-    this.setState(
-      state => {
-        return {
-          cartItems: state.cartItems.filter(
-            item => item.id !== itemToRemove.id
-          ),
-        };
-      },
-      () => this.updateCart()
-    );
-  };
-
-  updateCart = () => {
-    let { subtotal, grandTotal, shipping, cartItems } = this.state;
-
-    subtotal = cartItems.reduce(
-      (acc, item) => acc + item.price * item.quantity,
-      0
-    );
-    shipping = subtotal > 100 ? 0 : 23.8;
-    grandTotal = cartItems.length > 0 ? subtotal + shipping : 0;
-
-    this.setState({
-      subtotal: subtotal.toFixed(2),
-      grandTotal: grandTotal.toFixed(2),
-      shipping: shipping.toFixed(2),
-    });
-  };
-
-  toCheckout = () =>
-    this.setState(state => {
-      return { hidden: !state.hidden };
-    });
 
   render() {
-    const { cartItems, subtotal, grandTotal, shipping, hidden } = this.state;
+    const {
+      cartItems,
+      subtotal,
+      grandTotal,
+      shipping,
+      hidden,
+    } = this.props.cart;
+
+    const { updateCart, goToCheckout } = this.props;
 
     return (
       <div className={'shopping-cart'}>
         <div className={`${hidden ? 'hidden' : ''} shopping-cart__details`}>
           <header className="shopping-cart__header">
             <h1 className="shopping-cart__title">Shopping Cart</h1>
-            <button className="btn" onClick={this.toCheckout}>
+            <button className="btn" onClick={goToCheckout}>
               Proceed to checkout
             </button>
           </header>
@@ -134,9 +64,7 @@ class ShoppingCart extends React.Component {
                   <CartItem
                     key={item.id}
                     item={item}
-                    addItem={this.addItem}
-                    removeItem={this.removeItem}
-                    updateCart={this.updateCart}
+                    updateCart={updateCart}
                     clearItemFromCart={this.clearItemFromCart}
                   />
                 ))}
@@ -144,7 +72,7 @@ class ShoppingCart extends React.Component {
               <div className="shopping-cart__footer">
                 <button
                   className="btn btn--bold-text btn--footer"
-                  onClick={this.updateCart}
+                  onClick={updateCart}
                 >
                   Update Shopping Cart
                 </button>
@@ -171,10 +99,7 @@ class ShoppingCart extends React.Component {
                     ${grandTotal}
                   </span>
                 </div>
-                <button
-                  className="btn btn--bold-text"
-                  onClick={this.toCheckout}
-                >
+                <button className="btn btn--bold-text" onClick={goToCheckout}>
                   Proceed to checkout
                 </button>
               </div>
@@ -187,4 +112,13 @@ class ShoppingCart extends React.Component {
   }
 }
 
-export default ShoppingCart;
+const mapStateToProps = state => ({
+  cart: state.cart,
+});
+
+const mapDispatchToProps = dispatch => ({
+  updateCart: () => dispatch(updateCart()),
+  goToCheckout: () => dispatch(goToCheckout()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCart);
