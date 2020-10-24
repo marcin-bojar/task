@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { updateCart } from '../../redux/cart/cart.actions';
 
 import CartItem from '../cart-item/cart-item.component';
+import CustomButton from '../custom-button/custom-button.component';
 
 import './items-list.styles.css';
 
@@ -28,9 +29,9 @@ const ItemsList = ({ cartItems, updateCart }) => {
         ))}
       </div>
       <div className="items-list__footer">
-        <button className="btn btn--bold-text btn--footer" onClick={updateCart}>
+        <CustomButton footer bold handleClick={updateCart}>
           Update Shopping Cart
-        </button>
+        </CustomButton>
       </div>
     </div>
   );

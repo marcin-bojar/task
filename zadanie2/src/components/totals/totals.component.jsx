@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import CustomButton from '../custom-button/custom-button.component';
+
 import { goToCheckout } from '../../redux/cart/cart.actions';
 
 import './totals.styles.css';
@@ -18,16 +20,13 @@ const Totals = ({ cart: { subtotal, grandTotal, shipping }, goToCheckout }) => {
         </div>
         <div className="totals__table-item">
           Grand Total{' '}
-          <span
-            className="totals__table-span
-                                totals__table-span--big"
-          >
+          <span className="totals__table-span totals__table-span--big">
             ${grandTotal}
           </span>
         </div>
-        <button className="btn btn--bold-text" onClick={goToCheckout}>
+        <CustomButton bold handleClick={goToCheckout}>
           Proceed to checkout
-        </button>
+        </CustomButton>
       </div>
     </div>
   );

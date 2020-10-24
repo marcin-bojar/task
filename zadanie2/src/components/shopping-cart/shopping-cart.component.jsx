@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import ItemsList from '../items-list/items-list.component';
 import Totals from '../totals/totals.component';
+import CustomButton from '../custom-button/custom-button.component';
 
 import { updateCart, goToCheckout } from '../../redux/cart/cart.actions';
 
@@ -23,9 +24,9 @@ class ShoppingCart extends React.Component {
         <div className={`${hidden ? 'hidden' : ''} shopping-cart__details`}>
           <header className="shopping-cart__header">
             <h1 className="shopping-cart__title">Shopping Cart</h1>
-            <button className="btn" onClick={goToCheckout}>
+            <CustomButton handleClick={goToCheckout}>
               Proceed to checkout
-            </button>
+            </CustomButton>
           </header>
 
           <section className="shopping-cart__content">
