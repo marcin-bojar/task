@@ -1,0 +1,44 @@
+.items-list {
+  width: 75%;
+  min-height: 30rem;
+  border: var(--border-light);
+  box-shadow: var(--box-shadow-light);
+}
+
+.items-list__items {
+  min-height: 25rem;
+}
+
+.items-list__description {
+  position: relative;
+  display: flex;
+  height: 7rem;
+  padding: 2rem 0 1rem 0;
+  margin: 0 2.5rem;
+  border-bottom: var(--border-light);
+}
+
+.items-list__category {
+  position: absolute;
+  top: 60%;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.items-list__category--name {
+  left: 42%;
+}
+.items-list__category--price {
+  left: 63.5%;
+}
+.items-list__category--qty {
+  left: 81%;
+}
+
+.items-list__footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 7rem;
+  padding: 0 3rem;
+}

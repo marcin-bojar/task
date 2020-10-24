@@ -5,6 +5,7 @@ import {
   addItem,
   removeItem,
   clearItemFromCart,
+  updateCart,
 } from '../../redux/cart/cart.actions';
 
 import './cart-item.styles.css';
@@ -17,6 +18,7 @@ const CartItem = ({
   item,
 }) => {
   const { imageUrl, quantity, price, name } = item;
+
   return (
     <div className="cart-item">
       <div className="cart-item__remove-container">
@@ -54,6 +56,7 @@ const mapDispatchToProps = dispatch => ({
   addItem: item => dispatch(addItem(item)),
   removeItem: item => dispatch(removeItem(item)),
   clearItemFromCart: item => dispatch(clearItemFromCart(item)),
+  updateCart: () => dispatch(updateCart()),
 });
 
 export default connect(null, mapDispatchToProps)(CartItem);

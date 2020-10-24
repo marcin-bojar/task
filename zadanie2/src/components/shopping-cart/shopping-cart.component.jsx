@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import CartItem from '../cart-item/cart-item.component';
+import ItemsList from '../items-list/items-list.component';
+import Totals from '../totals/totals.component';
 
 import { updateCart, goToCheckout } from '../../redux/cart/cart.actions';
 
@@ -14,15 +15,8 @@ class ShoppingCart extends React.Component {
   }
 
   render() {
-    const {
-      cartItems,
-      subtotal,
-      grandTotal,
-      shipping,
-      hidden,
-    } = this.props.cart;
-
-    const { updateCart, goToCheckout } = this.props;
+    const { hidden } = this.props.cart;
+    const { goToCheckout } = this.props;
 
     return (
       <div className={'shopping-cart'}>
@@ -35,75 +29,8 @@ class ShoppingCart extends React.Component {
           </header>
 
           <section className="shopping-cart__content">
-            <div className="shopping-cart__items">
-              <div className="shopping-cart__items-list">
-                <div className="shopping-cart__description">
-                  <h4
-                    className="shopping-cart__category
-                            shopping-cart__category--name"
-                  >
-                    Product Name
-                  </h4>
-
-                  <h4
-                    className="shopping-cart__category
-                            shopping-cart__category--price"
-                  >
-                    Unit Price
-                  </h4>
-
-                  <h4
-                    className="shopping-cart__category
-                            shopping-cart__category--qty"
-                  >
-                    Qty
-                  </h4>
-                </div>
-
-                {cartItems.map(item => (
-                  <CartItem
-                    key={item.id}
-                    item={item}
-                    updateCart={updateCart}
-                    clearItemFromCart={this.clearItemFromCart}
-                  />
-                ))}
-              </div>
-              <div className="shopping-cart__footer">
-                <button
-                  className="btn btn--bold-text btn--footer"
-                  onClick={updateCart}
-                >
-                  Update Shopping Cart
-                </button>
-              </div>
-            </div>
-
-            <div className="shopping-cart__totals">
-              <div className="shopping-cart__table-header">
-                Shipping{' '}
-                <span className="shopping-cart__table-span">${shipping}</span>
-              </div>
-              <div className="shopping-cart__table-header">Cart Totals</div>
-              <div className="shopping-cart__table">
-                <div className="shopping-cart__table-item">
-                  Subtotal{' '}
-                  <span className="shopping-cart__table-span">${subtotal}</span>
-                </div>
-                <div className="shopping-cart__table-item">
-                  Grand Total{' '}
-                  <span
-                    className="shopping-cart__table-span
-                                shopping-cart__table-span--big"
-                  >
-                    ${grandTotal}
-                  </span>
-                </div>
-                <button className="btn btn--bold-text" onClick={goToCheckout}>
-                  Proceed to checkout
-                </button>
-              </div>
-            </div>
+            <ItemsList />
+            <Totals />
           </section>
         </div>
         {hidden && <h2>Your order has been submitted successfully</h2>}
