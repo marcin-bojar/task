@@ -28,9 +28,11 @@
 .items-list__category--name {
   left: 42%;
 }
+
 .items-list__category--price {
   left: 63.5%;
 }
+
 .items-list__category--qty {
   left: 81%;
 }
@@ -41,4 +43,46 @@
   align-items: center;
   height: 7rem;
   padding: 0 3rem;
+}
+
+@media screen and (max-width: 81.25em) {
+  .items-list__category--name {
+    left: 40%;
+  }
+
+  .items-list__category--price {
+    left: 60%;
+  }
+
+  .items-list__category--qty {
+    left: 78%;
+  }
+}
+
+@media only screen and (max-width: 62.5em) {
+  .items-list__category--name {
+    left: 37%;
+  }
+
+  .items-list__category--price {
+    left: 60%;
+  }
+
+  .items-list__category--qty {
+    left: 77%;
+  }
+}
+
+@media only screen and (max-width: 50em) {
+  .items-list__category--name {
+    left: 39%;
+  }
+
+  .items-list__category--price {
+    left: 61%;
+  }
+
+  .items-list__category--qty {
+    left: 80%;
+  }
 }

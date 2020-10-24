@@ -61,3 +61,51 @@
 .cart-item__price {
   font-weight: 500;
 }
+
+.quantity-editor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 2rem;
+}
+
+.quantity-editor__btn,
+.quantity-editor__qty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0;
+  border: var(--border-light);
+  font-family: inherit;
+  font-size: 1.3rem;
+}
+
+.quantity-editor__btn {
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+  font-weight: 700;
+}
+
+.quantity-editor__btn:focus,
+.quantity-editor__btn:active {
+  outline: none;
+}
+
+.quantity-editor__qty {
+  border: 2px solid var(--color-black); /*I'm pretty sure there is a inset box-shadow used, need to come back to this */
+}
+
+@media only screen and (max-width: 68.75em) {
+  .quantity-editor {
+    margin-right: 2.5rem;
+  }
+}
+
+@media only screen and (max-width: 50em) {
+  .quantity-editor {
+    margin-right: -2rem;
+  }
+}
